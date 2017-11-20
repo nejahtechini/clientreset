@@ -1,0 +1,40 @@
+
+
+  
+
+      <form  [formGroup]="Form" class="container"  (ngSubmit)="onSubmit()">
+
+          <label for="name">Name</label>
+        <input type="text" name="name" class="form-control"  formControlName="name"   > 
+        <!--  [(ngModel)]="user.name" pour  affecter un attribut dans input -->
+          <div class="alert" *ngIf="!Form.controls['name'].valid">
+           <!-- && Form.controls['name'].touched"> -->
+           {{titleAlert}}</div>
+       
+       
+
+     
+          <label for="salary">Salary</label>
+          <input type="text" name="salary" class="form-control"  formControlName="salary"  >
+  
+
+          <label for="teamName">TeamName</label>
+          <input type="text" name="teamName" class="form-control"  formControlName="teamName" >
+          <button type="submit" class="btn btn-primary"   >Submit</button>
+          <button type="button" class="btn btn-warning" (click)="redirectUserPage()">Cancel</button>
+          <pre>{{Form.value | json}}</pre>
+          <!-- <input type="submit" [disabled]="!Form.valid" value="save" class="btn btn-success" (click)="onProcess()">
+          <input type="checkbox" name="validate" formControlName="validate"  ng-true-value="1" ng-false-value="0"  ng-checked="checkbox == 1"> On -->
+      </form>
+    
+
+
+
+
+      
+   
+  
+
+
+<!--           
+<input type="checkbox" name="validate" formControlName="validate" value="1"> On -->

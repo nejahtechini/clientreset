@@ -1,0 +1,33 @@
+<div class="container">
+<table class="table table-stripe">
+  <thead>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Salary</th>
+    <th>TeamName</th>
+    <th></th>
+    <th></th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users">
+<td>{{user.id}}</td>
+<td>{{user.name}}</td>
+<td>{{user.salary}}</td>
+<td>{{user.teamName}}</td>
+
+
+<td> <button class="btn btn-danger"   (click)="deleteUser(user)">Delete</button></td> 
+<!-- updateUser Version one with getter and setter  -->
+<!-- <td> <button class="btn btn-primary" (click)="updateUser(user)">Update</button></td> -->
+
+<td><button  class="btn btn-primary" (click)="editUserPage(user)">Edit</button></td>
+
+    </tr>
+  </tbody>
+
+</table>
+<!-- NEWuSER Version one with getter and setter -->
+<!-- <td> <button class="btn btn-primary" (click)="newUser()" >Add User</button></td> -->
+<button type="button" class="btn btn-primary" (click)="redirectNewUserPage()">New User</button>
+
+</div> 
