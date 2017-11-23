@@ -3,6 +3,7 @@ import { UserService } from './userform.service';
 import { ListuserService } from '../listuser/listuser.service';
 import { User } from '../../model/user';
 import {Router} from '@angular/router' ;
+import {SharedService} from '../service/shared.service' ;
 @Component({
   selector: 'app-userform',
   templateUrl: './userform.component.html',
@@ -12,7 +13,8 @@ export class UserformComponent implements OnInit {
 
   users: Array<User>;
      user: User;
-  constructor(private userService: UserService , private router: Router , private listUserService: ListuserService) { }
+  constructor(private userService: UserService , private router: Router , private listUserService: ListuserService
+  , private sharedService: SharedService ) { }
 
   ngOnInit() {
     this.userService.getUser().subscribe(
@@ -21,6 +23,7 @@ export class UserformComponent implements OnInit {
         console.log(this.users);
       }
     );
+this.sharedService.newuserSubject.subscribe(data => this.users = [data, ...this.users]);
   }
   deleteUser(user) {
     console.log(user.id + user.name) ;

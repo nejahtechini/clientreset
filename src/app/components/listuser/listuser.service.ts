@@ -20,11 +20,12 @@ private apiUrl: 'http://localhost:8081/rest/users';
   //   getter() {
   //   return this.user ;
   //   }
-  createUser( user: User) {
+  createUser( user: User): Observable<User> {
     const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: headers });
     console.log(user);
-    return this.http.post('http://localhost:8081/rest/users/load', user, options);
+    return this.http.post('http://localhost:8081/rest/users/load', user, options).map((res: Response) => res.json())
+    .catch((error: any) => Observable.throw('Error'));
 }
 
 

@@ -8,6 +8,7 @@ import { UserformComponent } from './components/userform/userform.component';
 import {HttpModule} from '@angular/http';
 import {FormsModule , ReactiveFormsModule , FormControl} from '@angular/forms' ;
 import { ListuserService} from './components/listuser/listuser.service';
+import {SharedService} from './components/service/shared.service';
 const appRoutes: Routes = [
   // {path: 'op', component: ListuserComponent},
   {path: '' , component: UserformComponent},
@@ -26,7 +27,7 @@ const appRoutes: Routes = [
     HttpModule, ReactiveFormsModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [UserService , ListuserService],
+  providers: [UserService , ListuserService , SharedService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -7,7 +7,7 @@ import { isUndefined } from 'util';
 import { AbstractControl } from '@angular/forms';
 import { FormGroup, FormControl, Validators, ReactiveFormsModule, FormBuilder } from '@angular/forms';
 import { Response } from '@angular/http/src/static_response';
-
+import {SharedService} from '../service/shared.service' ;
 @Component({
   selector: 'app-listuser',
   templateUrl: './listuser.component.html',
@@ -21,7 +21,8 @@ export class ListuserComponent implements OnInit {
   name: string;
   sub: any;
   addrVaraible: UserAddress;
-  constructor(private listuserservice: ListuserService, private router: Router, private route: ActivatedRoute) {
+  constructor(private listuserservice: ListuserService, private router: Router,
+     private route: ActivatedRoute , private sharedService: SharedService) {
   }
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
@@ -70,6 +71,8 @@ export class ListuserComponent implements OnInit {
         const useradd: UserAddress = new UserAddress(value.countryName);
         const user: User = new User(value.name, value.teamName, value.salary, useradd);
         this.listuserservice.createUser(user).subscribe(response => { this.router.navigate(['/']); });
+        console.log('hiiiiiiiiiiiiiiii');
+        this.sharedService.addNewLine(user);
       }
     }
     this.form.reset();
