@@ -1,7 +1,7 @@
 <div class="container">
 <table class="table table-stripe">
   <thead>
-    <th>ID</th>
+    
     <th>Name</th>
     <th>Salary</th>
     <th>TeamName</th>
@@ -10,12 +10,9 @@
   </thead>
   <tbody>
     <tr *ngFor="let user of users">
-<td>{{user.id}}</td>
 <td>{{user.name}}</td>
 <td>{{user.salary}}</td>
 <td>{{user.teamName}}</td>
-
-
 <td> <button class="btn btn-danger"   (click)="deleteUser(user)">Delete</button></td> 
 <!-- updateUser Version one with getter and setter  -->
 <!-- <td> <button class="btn btn-primary" (click)="updateUser(user)">Update</button></td> -->

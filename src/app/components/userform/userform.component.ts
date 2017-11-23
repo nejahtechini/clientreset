@@ -23,6 +23,7 @@ export class UserformComponent implements OnInit {
     );
   }
   deleteUser(user) {
+    console.log(user.id + user.name) ;
     this.userService.deleteUser(user.id).subscribe(
       data => {
         this.users.splice(this.users.indexOf(user), 1);

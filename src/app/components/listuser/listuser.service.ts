@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
 import { Http, Headers, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
+import 'rxjs/Rx';
 import { RequestOptions, Request, RequestMethod } from '@angular/http';
 import { User } from '../../model/user';
 
@@ -33,13 +34,14 @@ updateUser( user: User) {
   });
 }
 findById(id: Number): Observable<User> {
-  return this.http.get('http://localhost:8081/rest/users/id/'+ id)
-    .map((res:Response) => res.json())
-    .catch((error:any) => Observable.throw(error.json().error || 'Error'));
+  return this.http.get('http://localhost:8081/rest/users/id/' + id)
+    .map((res: Response) => res.json())
+    .catch((error: any) => Observable.throw( 'Error'));
 }
 findByName(name: string): Observable<User> {
-  return this.http.get('http://localhost:8081/rest/users/Name/'+ name)
-    .map((res:Response) => res.json())
-    .catch((error:any) => Observable.throw(error.json().error || 'Error'));
+  return this.http.get('http://localhost:8081/rest/users/name/' + name)
+  .map((res: Response) => res.json())
+    .catch((error: any) => Observable.throw('Error'));
 }
+
 }
