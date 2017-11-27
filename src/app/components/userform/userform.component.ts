@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from './userform.service';
-import { ListuserService } from '../listuser/listuser.service';
+import { ListuserService } from './listuser/listuser.service';
 import { User } from '../../model/user';
 import {Router} from '@angular/router' ;
-import {SharedService} from '../service/shared.service' ;
+import {SharedService} from '../../service/shared.service' ;
 import {AnonymousSubscription} from 'rxjs/Subscription';
 import {Observable} from 'rxjs/Observable';
 
@@ -30,7 +30,7 @@ export class UserformComponent implements OnInit {
       }
     );
 // this.sharedService.newuserSubject.subscribe(data => this.users = [data, ...this.users]);
- this.sharedService.newuserSubject.subscribe(data => {this.users.push(data); });
+// this.sharedService.newuserSubject.subscribe(data => {this.users.push(data); });
 //this.subscribeToData(); //to call subscribe every time.
 
   }
@@ -61,7 +61,7 @@ export class UserformComponent implements OnInit {
   }
   editUserPage(user: User) {
     if (user) {
-      this.router.navigate(['edit', user.name]);
+      this.router.navigate(['edit']);
     }
   }
 
@@ -76,5 +76,10 @@ private subscribeToData(): void {
     this.timerSubscription = Observable.timer(5000).first().subscribe(() => this.refreshData());
 }
 
+
+
+pushUser(user: User) {
+  this.users.push(user) ;
+}
 }
 

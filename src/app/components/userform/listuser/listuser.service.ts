@@ -4,7 +4,7 @@ import { Http, Headers, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/Rx';
 import { RequestOptions, Request, RequestMethod } from '@angular/http';
-import { User } from '../../model/user';
+import { User } from '../../../model/user';
 
 @Injectable()
 export class ListuserService {

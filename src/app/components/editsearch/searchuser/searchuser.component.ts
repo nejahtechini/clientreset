@@ -1,9 +1,10 @@
 import { UserAddress } from './../../../model/userAddress';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { ListuserService } from '../../listuser/listuser.service';
+import {SharedService} from '../../../service/shared.service' ;
 import { User } from '../../../model/user';
 import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
+import {ListuserService} from '../../userform/listuser/listuser.service' ;
 @Component({
   selector: 'app-searchuser',
   templateUrl: './searchuser.component.html',

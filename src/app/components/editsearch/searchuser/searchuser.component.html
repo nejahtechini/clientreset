@@ -3,7 +3,7 @@
   <p>{{editName}}</p>
   <form  [formGroup]="formEdit" class="container"  (ngSubmit)="onSubmit(formEdit.value)">
     <label for="name">Name</label>
-  <input type="text" [formControl]="formEdit.controls['name']" name="name" class="form-control"> 
+  <input type="text" [formControl]="formEdit.controls['name']" name="name" class="form-control mr-sm-2"> 
    
    <label for="salary">Salary</label>
     <input type="text" name="salary" class="form-control"  [formControl]="formEdit.controls['salary']">
