@@ -23,8 +23,6 @@ const appRoutes: Routes = [
     ListuserComponent,
     UserformComponent,
     SearchuserComponent,
-    
-
   ],
   imports: [
     BrowserModule, FormsModule,

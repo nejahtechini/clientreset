@@ -41,8 +41,6 @@ findById(id: Number): Observable<User> {
 }
 findByName(name: string): Observable<User> {
   return this.http.get('http://localhost:8081/rest/users/name/' + name)
-  .map((res: Response) => res.json())
-    
+  .map((res: Response) => res.json()) ;
 }
-
 }

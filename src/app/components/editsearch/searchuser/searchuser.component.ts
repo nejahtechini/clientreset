@@ -13,7 +13,7 @@ export class SearchuserComponent implements OnInit {
   editName: string;
   formEdit: FormGroup;
   idUserEdit: Number;
-  addressUserEdit: UserAddress;
+  addressUserEdit: UserAddress ;
   constructor(private listuserService: ListuserService, private router: Router) { }
 
   ngOnInit() {
@@ -40,7 +40,6 @@ export class SearchuserComponent implements OnInit {
           salary: userEdit.salary,
           countryName: this.addressUserEdit.countryName,
         });
-      
     });
   }
   onSubmit(value) {
@@ -50,7 +49,6 @@ export class SearchuserComponent implements OnInit {
       this.listuserService.createUser(user).subscribe(response => { this.router.navigate(['/']); });
     }
   }
-  redirectHome()
-  {
+  redirectHome() {
     this.router.navigate(['/']); }
 }

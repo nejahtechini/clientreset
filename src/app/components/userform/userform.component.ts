@@ -4,6 +4,9 @@ import { ListuserService } from '../listuser/listuser.service';
 import { User } from '../../model/user';
 import {Router} from '@angular/router' ;
 import {SharedService} from '../service/shared.service' ;
+import {AnonymousSubscription} from 'rxjs/Subscription';
+import {Observable} from 'rxjs/Observable';
+
 @Component({
   selector: 'app-userform',
   templateUrl: './userform.component.html',
@@ -13,6 +16,9 @@ export class UserformComponent implements OnInit {
 
   users: Array<User>;
      user: User;
+     private timerSubscription: AnonymousSubscription;
+     private usersSubscription: AnonymousSubscription;
+
   constructor(private userService: UserService , private router: Router , private listUserService: ListuserService
   , private sharedService: SharedService ) { }
 
@@ -23,7 +29,10 @@ export class UserformComponent implements OnInit {
         console.log(this.users);
       }
     );
-this.sharedService.newuserSubject.subscribe(data => this.users = [data, ...this.users]);
+// this.sharedService.newuserSubject.subscribe(data => this.users = [data, ...this.users]);
+ this.sharedService.newuserSubject.subscribe(data => {this.users.push(data); });
+//this.subscribeToData(); //to call subscribe every time.
+
   }
   deleteUser(user) {
     console.log(user.id + user.name) ;
@@ -55,5 +64,17 @@ this.sharedService.newuserSubject.subscribe(data => this.users = [data, ...this.
       this.router.navigate(['edit', user.name]);
     }
   }
+
+  private refreshData(): void {
+    this.usersSubscription = this.userService.getUser().subscribe(users => {
+        this.users = users;
+        this.subscribeToData();
+    });
+}
+
+private subscribeToData(): void {
+    this.timerSubscription = Observable.timer(5000).first().subscribe(() => this.refreshData());
+}
+
 }
 

@@ -17,7 +17,6 @@ export class ListuserComponent implements OnInit {
 
   private titleAlert = 'You need to specify at least 3 characters';
   form: FormGroup;
-
   name: string;
   sub: any;
   addrVaraible: UserAddress;
@@ -47,9 +46,8 @@ export class ListuserComponent implements OnInit {
       const useradd: UserAddress = new UserAddress(value.countryName);
       const user: User = new User(value.name, value.teamName, value.salary, useradd);
       this.listuserservice.createUser(user).subscribe(response => {
-        let userAdd: User = response;
         this.router.navigate(['/']);
-        this.sharedService.addNewLine(userAdd);
+        this.sharedService.addNewLine(response);
       });
     }
 
