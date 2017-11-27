@@ -1,0 +1,16 @@
+<label >Recherche By Name</label>
+  <input (keyup)="onKey($event)">
+  <p>{{editName}}</p>
+  <form  [formGroup]="formEdit" class="container"  (ngSubmit)="onSubmit(formEdit.value)">
+    <label for="name">Name</label>
+  <input type="text" [formControl]="formEdit.controls['name']" name="name" class="form-control"> 
+   
+   <label for="salary">Salary</label>
+    <input type="text" name="salary" class="form-control"  [formControl]="formEdit.controls['salary']">
+    <label for="teamName">TeamName</label>
+    <input type="text" name="teamName" class="form-control"  [formControl]="formEdit.controls['teamName']">
+    <label for="countryName">Country</label>
+    <input type="text" name="countryName" class="form-control"  [formControl]="formEdit.controls['countryName']">
+    <button type="submit" class="btn btn-primary"   >Submit</button>
+    <button type="submit" class="btn btn-primary"  (click)="redirectHome()" >Cancel</button>
+  </form>
