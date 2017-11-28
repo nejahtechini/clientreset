@@ -1,9 +1,11 @@
+<br/><br/>
 <label >Recherche By Name</label>
+<br/>
   <input (keyup)="onKey($event)">
   <p>{{editName}}</p>
   <form  [formGroup]="formEdit" class="container"  (ngSubmit)="onSubmit(formEdit.value)">
     <label for="name">Name</label>
-  <input type="text" [formControl]="formEdit.controls['name']" name="name" class="form-control mr-sm-2"> 
+  <input type="text"  [formControl]="formEdit.controls['name']" name="name" > 
    
    <label for="salary">Salary</label>
     <input type="text" name="salary" class="form-control"  [formControl]="formEdit.controls['salary']">

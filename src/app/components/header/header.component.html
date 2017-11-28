@@ -1,6 +1,19 @@
+<!-- <br/><br/>
+<form  ng-app="myApp" ng-controller="myCtrl">
+  <a routerLink="/recherche" >Recherche</a>
 
-  <a routerLink="/recherche" routerLinkActive="active">Recherche</a>
-
-  <a routerLink="/" routerLinkActive="active">HomePage</a>
-
-
+  <a routerLink="/" onclick="change()"  >HomePage</a>
+  $scope.change =function(){
+    return {
+      color:"red"
+    }
+</form> -->
+<div ng-controller="SimpleController">
+    <input ng-model="message">
+    <span>{{message}}</span>
+  </div>
+<script>
+ app.controller('SimpleController', function($scope) {
+  $scope.message = 'Hello Angular!';
+});
+</script>

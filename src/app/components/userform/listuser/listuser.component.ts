@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter , Input} from '@angular/core';
 import { User } from '../../../model/user';
 import { UserAddress } from '../../../model/userAddress';
 import { ListuserService } from './listuser.service';
@@ -15,18 +15,20 @@ import { SharedService } from '../../../service/shared.service' ;
 })
 export class ListuserComponent implements OnInit {
 @Output() notify: EventEmitter<User> = new EventEmitter();
+@Input()  welcamMessage: string ;
   private titleAlert = 'You need to specify at least 3 characters';
   form: FormGroup;
   name: string;
-  sub: any;
+  // sub: any;
   addrVaraible: UserAddress;
   constructor(private listuserservice: ListuserService, private router: Router,
     private route: ActivatedRoute, private sharedService: SharedService) {
   }
   ngOnInit() {
-    this.sub = this.route.params.subscribe(params => {
-      this.name = params['name'];
-    });
+    // this.sub = this.route.params.subscribe(params => {
+    //   this.name = params['name'];
+    // console.log(this.name);
+    // });
 
     this.form = new FormGroup({
       name: new FormControl('', Validators.compose([Validators.required])),

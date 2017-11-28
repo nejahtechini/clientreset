@@ -17,7 +17,7 @@ const appRoutes: Routes = [
   // {path: 'op', component: ListuserComponent},
   {path: '' , component: UserformComponent},
   {path: 'create', component: ListuserComponent},
-  {path: 'edit', component: SearchuserComponent} ,
+  {path: 'edit', component: SearchuserComponent},
   {path: 'recherche', component: SearchuserComponent}
 ];
 @NgModule({

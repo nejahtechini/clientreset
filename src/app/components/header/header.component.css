@@ -1,0 +1,12 @@
+.current-page {
+    pointer-events: none;
+    color: grey;
+  }
+  .btn-is-active {
+    pointer-events: none; /* Disables the button completely. Better than just cursor: default; */
+   
+  }
+  .not-active {
+    pointer-events: none;
+    cursor: default;
+ }

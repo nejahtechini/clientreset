@@ -1,7 +1,11 @@
 
+
+
 <form  [formGroup]="form" class="container"  (ngSubmit)="onSubmit(form.value)">
+    <br/>
+    <label>{{welcamMessage}}</label><br/><br/>
   <label for="name">Name</label>
-<input type="text" [formControl]="form.controls['name']" name="name" class="form-control"> 
+<input type="text"   [formControl]="form.controls['name']" name="name" class="form-control"> 
   <label for="salary">Salary</label>
   <input type="text" name="salary" class="form-control"  [formControl]="form.controls['salary']">
   <label for="teamName">TeamName</label>
