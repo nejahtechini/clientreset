@@ -11,7 +11,7 @@ users= [];
   constructor(private http: Http) {}
 
   getUser(): Observable<User[]> {
-    return this.http.get('http://localhost:8081/rest/users/all').map((res) => {
+    return this.http.get('http://localhost:8081/rest/users/allUser').map((res) => {
         return res.json();
     });
 }
@@ -19,5 +19,11 @@ deleteUser(id: number): Observable<User> {
   return this.http.delete('http://localhost:8081/rest/users/user/' + id).map((res) => {
       return res.json();
   });
+}
+
+public getdata(page: Number): any {
+    return this.http.get(`http://localhost:8081/rest/users/all?page=2 & size=3`)
+        .map((response: Response) => response.json())
+        .catch((error: any) => Observable.throw(error.json().error) || 'Server Error');
 }
 }

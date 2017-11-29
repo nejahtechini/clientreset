@@ -6,7 +6,21 @@
     pointer-events: none; /* Disables the button completely. Better than just cursor: default; */
    
   }
-  .not-active {
-    pointer-events: none;
-    cursor: default;
- }
+ /* unvisited link */
+/* a:link {
+  color: green;
+}
+
+/* visited link */
+/* a:visited {
+  color: red;
+} */
+
+/* mouse over link */
+
+
+/* selected link */
+/* a:active {
+  pointer-events: none;
+  color: grey;
+} */ 

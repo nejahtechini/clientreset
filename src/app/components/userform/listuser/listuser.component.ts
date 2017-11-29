@@ -52,6 +52,7 @@ export class ListuserComponent implements OnInit {
        // this.sharedService.addNewLine(response);
        this.notify.emit(response);
       });
+      this.form.reset();
     }
 
   }

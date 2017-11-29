@@ -1,3 +1,7 @@
+
+
+
+
 <app-listuser (notify)=pushUser($event) [welcamMessage]="message"></app-listuser>
 <div class="container">
   <table class="table table-stripe">
@@ -9,7 +13,7 @@
       <th></th>
     </thead>
     <tbody>
-      <tr *ngFor="let user of users">
+      <tr *ngFor = ' let user of users | paginate : { itemsPerPage:2,currentPage:page } ' >
         <td>{{user.name}}</td>
         <td>{{user.salary}}</td>
         <td>{{user.teamName}}</td>
@@ -24,6 +28,10 @@
       </tr>
     </tbody>
   </table>
+  <pagination-controls 
+  (pageChange) = "page= $event" 
+  >
+</pagination-controls>
   <!-- NEWuSER Version one with getter and setter -->
   <!-- <td> <button class="btn btn-primary" (click)="newUser()" >Add User</button></td> -->
 </div>

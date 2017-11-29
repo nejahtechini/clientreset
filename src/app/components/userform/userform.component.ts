@@ -16,9 +16,10 @@ export class UserformComponent implements OnInit {
   message: string;
   users: Array<User>;
   user: User;
+  totalItem ;
   private timerSubscription: AnonymousSubscription;
   private usersSubscription: AnonymousSubscription;
-
+  title = 'Simple Server side Angular 2 pagination';
   constructor(private userService: UserService, private router: Router, private listUserService: ListuserService
     , private sharedService: SharedService) { }
 
@@ -72,6 +73,21 @@ export class UserformComponent implements OnInit {
   }
   sendNameUser(user: User) {
     this.message = 'Welcame' + '   ' + user.name + '   !!!!';
+  }
+  public getServerData(event) {
+    this.userService.getdata(event).subscribe(response => {
+      if (response.error) {
+        alert('Server Error');
+      } else {
+        this.users = response.users;
+        this.totalItem = response.totalItems;
+      }
+    },
+      error => {
+        alert('Server error');
+      }
+    );
+    return event;
   }
 }
 

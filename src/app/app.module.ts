@@ -11,7 +11,7 @@ import { ListuserService} from './components/userform/listuser/listuser.service'
 import {SharedService} from './service/shared.service';
 import { SearchuserComponent } from './components/editsearch/searchuser/searchuser.component';
 import { HeaderComponent } from './components/header/header.component';
-
+import {Ng2PaginationModule} from 'ng2-pagination';
 
 const appRoutes: Routes = [
   // {path: 'op', component: ListuserComponent},
@@ -31,7 +31,7 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule, FormsModule,
     HttpModule, ReactiveFormsModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes), Ng2PaginationModule
   ],
   providers: [UserService , ListuserService , SharedService],
   bootstrap: [AppComponent]
