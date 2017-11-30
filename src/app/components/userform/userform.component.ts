@@ -62,7 +62,7 @@ export class UserformComponent implements OnInit {
   }
   editUserPage(user: User) {
     if (user) {
-      this.sharedService.addNewLine(user);
+      this.sharedService.setter(user);
       this.router.navigate(['edit']);
     }
   }
@@ -74,20 +74,6 @@ export class UserformComponent implements OnInit {
   sendNameUser(user: User) {
     this.message = 'Welcame' + '   ' + user.name + '   !!!!';
   }
-  public getServerData(event) {
-    this.userService.getdata(event).subscribe(response => {
-      if (response.error) {
-        alert('Server Error');
-      } else {
-        this.users = response.users;
-        this.totalItem = response.totalItems;
-      }
-    },
-      error => {
-        alert('Server error');
-      }
-    );
-    return event;
-  }
+
 }
 

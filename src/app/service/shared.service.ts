@@ -5,9 +5,18 @@ import { Observable } from 'rxjs/Rx';
 
 @Injectable()
 export class SharedService {
+  private user: User;
   public newuserSubject = new Subject<User>();
   constructor() { }
   addNewLine(user) {
     this.newuserSubject.next(user);
+  }
+
+
+  setter(user: User) {
+    this.user = user;
+  }
+  getter() {
+    return this.user;
   }
 }

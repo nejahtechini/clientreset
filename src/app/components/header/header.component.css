@@ -24,3 +24,10 @@
   pointer-events: none;
   color: grey;
 } */ 
+
+
+a.disabled {
+  pointer-events: none;
+  cursor: default;
+  color: gray;
+  }

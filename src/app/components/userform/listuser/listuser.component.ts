@@ -19,17 +19,12 @@ export class ListuserComponent implements OnInit {
   private titleAlert = 'You need to specify at least 3 characters';
   form: FormGroup;
   name: string;
-  // sub: any;
+   sub: any;
   addrVaraible: UserAddress;
   constructor(private listuserservice: ListuserService, private router: Router,
     private route: ActivatedRoute, private sharedService: SharedService) {
   }
   ngOnInit() {
-    // this.sub = this.route.params.subscribe(params => {
-    //   this.name = params['name'];
-    // console.log(this.name);
-    // });
-
     this.form = new FormGroup({
       name: new FormControl('', Validators.compose([Validators.required])),
       salary: new FormControl(),

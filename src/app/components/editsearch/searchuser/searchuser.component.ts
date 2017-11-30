@@ -1,10 +1,11 @@
 import { UserAddress } from './../../../model/userAddress';
-import { Router } from '@angular/router';
+import { Router , ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { SharedService } from '../../../service/shared.service';
 import { User } from '../../../model/user';
 import { FormGroup, FormControl, Validators, ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ListuserService } from '../../userform/listuser/listuser.service';
+import { Observable } from 'rxjs/Rx';
 @Component({
   selector: 'app-searchuser',
   templateUrl: './searchuser.component.html',
@@ -16,28 +17,37 @@ export class SearchuserComponent implements OnInit {
   formEdit: FormGroup;
   idUserEdit: Number;
   addressUserEdit: UserAddress;
-  constructor(private listuserService: ListuserService, private router: Router, private sharedService: SharedService) {
+  sub: any ;
+  constructor(private listuserService: ListuserService, private router: Router, private sharedService: SharedService ,
+    private route: ActivatedRoute) {
   }
   ngOnInit() {
+
     this.formEdit = new FormGroup({
       name: new FormControl('', Validators.compose([Validators.required])),
       salary: new FormControl(),
       teamName: new FormControl(),
       countryName: new FormControl()
     });
-    this.init(this.formEdit);
+     this.route.url.subscribe( url => {
+     if ( url[0].path === 'edit') {
+      this.init(this.formEdit);
+    }
+     });
+
   }
   init(form: FormGroup) {
-    this.sharedService.newuserSubject.subscribe(data => {
+    this.model = this.sharedService.getter();
+    this.idUserEdit =  this.model.id;
+    if ( this.model.userAddress) {
+      this.addressUserEdit =  this.model.userAddress;
+    }
       form.patchValue({
-        name: data.name,
-        teamName: data.teamName,
-        salary: data.salary,
-        countryName : data.userAddress.countryName
+        name:  this.model.name,
+        teamName:  this.model.teamName,
+        salary:  this.model.salary,
+        countryName :  this.model.userAddress.countryName
       });
-    console.log('----------' + data.name);
-    this.model = data;
-    });
   }
   onKey(event: any) {
 

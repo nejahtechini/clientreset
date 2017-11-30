@@ -7,23 +7,24 @@ import { User } from '../../model/user';
 
 @Injectable()
 export class UserService {
-users= [];
-  constructor(private http: Http) {}
+    users = [];
+    constructor(private http: Http) { }
 
-  getUser(): Observable<User[]> {
-    return this.http.get('http://localhost:8081/rest/users/allUser').map((res) => {
-        return res.json();
-    });
-}
-deleteUser(id: number): Observable<User> {
-  return this.http.delete('http://localhost:8081/rest/users/user/' + id).map((res) => {
-      return res.json();
-  });
-}
+    getUser(): Observable<User[]> {
+        return this.http.get('http://localhost:8081/rest/users/allUser').map((res) => {
+            return res.json();
+        });
+    }
 
-public getdata(page: Number): any {
-    return this.http.get(`http://localhost:8081/rest/users/all?page=2 & size=3`)
-        .map((response: Response) => response.json())
-        .catch((error: any) => Observable.throw(error.json().error) || 'Server Error');
-}
+    deleteUser(id: number): Observable<User> {
+        return this.http.delete('http://localhost:8081/rest/users/user/' + id).map((res) => {
+            return res.json();
+        });
+    }
+
+    public getdata(page: Number, size: Number): any {
+        return this.http.get('http://localhost:8081/rest/users/allPage?page=' + page + '&size=' + size)
+            .map((response: Response) => response.json())
+            .catch((error: any) => Observable.throw(error.json().error) || 'Server Error');
+    }
 }

@@ -1,15 +1,7 @@
-<br/><br/>
-<form  ng-app="myApp" ng-controller="myCtrl">
-  <a routerLink="/recherche" >Recherche</a>
+<br/>
+<br/>
+<form ng-app="myApp" ng-controller="myCtrl">
+  <a routerLink="/recherche" [class.disabled]="isDisabledRecherche()" (click)="onClickRecherche()">Recherche</a>
 
-  <a routerLink="/"  >HomePage</a>
+  <a routerLink="/" [class.disabled]="isDisabledHome()" (click)=" onClickHome()">HomePage</a>
 </form>
-<!-- <div ng-controller="SimpleController">
-    <input ng-model="message">
-    <span>{{message}}</span>
-  </div>
-<script>
- app.controller('SimpleController', function($scope) {
-  $scope.message = 'Hello Angular!';
-});
-</script> -->

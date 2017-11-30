@@ -13,6 +13,7 @@ import { SearchuserComponent } from './components/editsearch/searchuser/searchus
 import { HeaderComponent } from './components/header/header.component';
 import {Ng2PaginationModule} from 'ng2-pagination';
 
+
 const appRoutes: Routes = [
   // {path: 'op', component: ListuserComponent},
   {path: '' , component: UserformComponent},
