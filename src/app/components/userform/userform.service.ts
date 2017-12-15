@@ -9,7 +9,6 @@ import { User } from '../../model/user';
 export class UserService {
     users = [];
     constructor(private http: Http) { }
-
     getUser(): Observable<User[]> {
         return this.http.get('http://localhost:8081/rest/users/allUser').map((res) => {
             return res.json();

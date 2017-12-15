@@ -15,3 +15,4 @@ export class User {
         this.id = id ;
         this.userAddress = userAddress ;
 }}
+
