@@ -8,7 +8,7 @@ import { AnonymousSubscription } from 'rxjs/Subscription';
 import { Observable } from 'rxjs/Observable';
 import { NgRedux, select } from '@angular-redux/store';
 import { IAppState } from '../../store';
-import { ADD_TODO, REMOVE_TODO, TOGGLE_TODO } from '../../actions';
+import { ADD_PRODUCT, REMOVE_TODO, TOGGLE_TODO } from '../../actions';
 import { IntUser } from '../../model/intuser';
 @Component({
   selector: 'app-userform',
@@ -18,7 +18,7 @@ import { IntUser } from '../../model/intuser';
 export class UserformComponent implements OnInit {
   message: string;
   users: Array<User>;
- Intusers: Array<IntUser>;
+
   user: User;
   totalItem ;
   private timerSubscription: AnonymousSubscription;
@@ -32,7 +32,6 @@ export class UserformComponent implements OnInit {
     this.userService.getUser().subscribe(
       data => {
         this.users = data;
-        this.Intusers = data;
         this.ngRedux.dispatch({type: 'SET_ALL_TODO', payload: {
           data }
         });

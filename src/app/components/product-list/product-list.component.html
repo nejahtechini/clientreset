@@ -6,9 +6,13 @@
 <h5>Choose User:</h5>
 <br>
 <div class="col-auto">
-  <select ng-model="selectedCar">
-    <option *ngFor="let x of Intusers | async" [ngValue]="x">{{x.name}}</option>
-  </select>
+ 
+  <!-- <select #selectElem (change)="setNewUser(selectElem.value)"> -->
+      <select   [(ngModel)] = "x" (change)="setListProduct()">
+    <option *ngFor="let x of Intusers | async" [ngValue]="x" >{{x.name}}</option>
+        
+   
+</select>
 </div>
 <br>
 <br>
@@ -34,15 +38,10 @@
 
 
       <div class="col-auto">
-        <input type="text" class="form-control" placeholder="image" id="image" [(ngModel)]="model.image" name="image" #responsible="ngModel">
+          <input type="file"class="form-control" placeholder="image" name="image" id="image" (change)="getFiles($event)"> 
+        <!-- <input type="text" class="form-control" placeholder="image" id="image" (change)="getFiles($event)"  name="image" #responsible="ngModel"> -->
       </div>
-      <!-- <div class="col-auto">
-      <select class="form-control" id="priority" [(ngModel)]="model.priority" name="priority" #priority="ngModel">
-        <option value="low">Low</option>
-        <option value="medium">Medium</option>
-        <option value="high">High</option>
-      </select>
-    </div> -->
+    
       <div class="col-auto">
         <button type="submit" class="btn btn-primary">Create</button>
       </div>
@@ -71,18 +70,18 @@
     <tbody>
       <tr *ngFor="let t of todos | async">
         <td>
-          <span (click)="toggleTodo(t)" [class.completed]="t.isCompleted">{{ t.id }}</span>
+          {{ t.id }}
         </td>
         <td>
-          <span (click)="toggleTodo(t)" [class.completed]="t.isCompleted">{{ t.description }}</span>
+          {{ t.name }}
         </td>
-        <td>
+        <!-- <td>
           <span (click)="toggleTodo(t)" [class.completed]="t.isCompleted">{{ t.responsible }}</span>
-        </td>
+        </td> -->
         <td>
-          <span *ngIf="t.priority == 'low'" class="badge badge-success">Low</span>
+          <!-- <span *ngIf="t.priority == 'low'" class="badge badge-success">Low</span>
           <span *ngIf="t.priority == 'medium'" class="badge badge-warning">Medium</span>
-          <span *ngIf="t.priority == 'high'" class="badge badge-danger">High</span>
+          <span *ngIf="t.priority == 'high'" class="badge badge-danger">High</span> -->
         </td>
         <td>
           <button class="btn btn-primary" (click)="removeTodo(t)">Delete</button>

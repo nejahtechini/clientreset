@@ -1,4 +1,5 @@
-export const ADD_TODO = 'ADD_TODO';
+export const ADD_PRODUCT = 'ADD_PRODUCT';
+export const GET_USER_PRODUCT='GET_USER_PRODUCT';
 export const TOGGLE_TODO = 'TOGGLE_TODO';
 export const REMOVE_TODO = 'REMOVE_TODO';
 export const GET_ALL_TODO = 'GET_ALL_TODO';
